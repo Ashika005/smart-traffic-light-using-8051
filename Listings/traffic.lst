@@ -1,0 +1,66 @@
+C51 COMPILER V9.60.7.0   TRAFFIC                                                           04/10/2026 16:36:03 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TRAFFIC
+OBJECT MODULE PLACED IN .\Objects\traffic.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE traffic.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\traffic.l
+                    -st) TABS(2) OBJECT(.\Objects\traffic.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "timer.h"
+   3          
+   4          sbit RED    = P1^0;
+   5          sbit GREEN  = P1^1;
+   6          sbit YELLOW = P1^2;
+   7          sbit PED = P3^2;
+   8          
+   9          void all_off()
+  10          {
+  11   1          RED=0; 
+  12   1          GREEN=0;
+  13   1          YELLOW=0;
+  14   1      }
+  15           void main()
+  16           {
+  17   1         while (1)
+  18   1         {
+  19   2           if(PED==0)
+  20   2           {
+  21   3             all_off();
+  22   3             RED = 1;
+  23   3             delay(2000);
+  24   3           }
+  25   2           else
+  26   2           {
+  27   3             RED=1;
+  28   3             GREEN =0;
+  29   3             YELLOW=0;
+  30   3             delay(5000);
+  31   3             RED=0;
+  32   3             GREEN =1;
+  33   3             YELLOW=0;
+  34   3             delay(3000);
+  35   3             RED=0;
+  36   3             GREEN =0;
+  37   3             YELLOW=1;
+  38   3             delay(2000);
+  39   3           }
+  40   2         }
+  41   1       }
+  42                 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     96    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
